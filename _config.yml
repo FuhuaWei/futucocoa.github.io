@@ -13,6 +13,9 @@ description: > # this means to ignore newlines until "baseurl:"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "futucocoa.github.io" # the base hostname & protocol for your site
 github_username:  futucocoa
-
+link1_name: "富途证券官方网站"
+link1_url: "https://www.futu5.com"
+link2_name: "富途牛牛下载地址"
+link2_url: "https://itunes.apple.com/cn/app/fu-tu-niu-niu-gu-gang-gu-mei/id664513913?mt=12"
 # Build settings
 markdown: kramdown
