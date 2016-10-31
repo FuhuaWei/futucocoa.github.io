@@ -43,11 +43,14 @@ print("Current Path：" + path)
 
 
 #### 使用`CommandLine`来获取脚本参数
+
 ```
 print(CommandLine.argc) // 2
 print(CommandLine.arguments) // ["./test.swift", "hello"]
 ```
+
 #### `Swift`运行`bash`命令
+
 ```
 /***
  * 执行shell命令，返回执行结果和输出结果
@@ -74,7 +77,9 @@ print(CommandLine.arguments) // ["./test.swift", "hello"]
 var result = shell("ls").1
 print("ls result:\n" + result)
 ```
+
 #### 指定颜色打印
+
 ```
 enum ColorCode : String {
     case black = "\u{001B}[0;30m"
@@ -105,6 +110,7 @@ print("ls result" + ColorCode.blue + "\n" + result)
 
 ### Rainbow
 [Rainbow](https://github.com/onevcat/Rainbow)可以打印非常丰富的样式
+
 ```
 public enum Color: UInt8 {
     case black = 30
@@ -152,10 +158,8 @@ public enum Style: UInt8 {
 
 # 分工实现实用的Swift脚本
 
-| 脚本目标 | 负责人 | 预计完成时间 |
-|---|---|---|
-|找出项目中没有用到的图片|
-|分析3套皮肤中相同图片的个数、存储大小及其占所有图片的比例|
-|找出项目中未本地化的字符串|
-|检查项目中注册了通知，但没有取消注册的问题|
+- 找出项目中没有用到的图片 
+- 分析3套皮肤中相同图片的个数、存储大小及其占所有图片的比例
+- 找出项目中未本地化的字符串
+- 检查项目中注册了通知，但没有取消注册的问题
 

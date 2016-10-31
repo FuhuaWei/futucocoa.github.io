@@ -95,4 +95,6 @@ QQMusic.app: replacing existing signature
 
 其实Xcode也很好的实现了重新签名的工作，如果我们要把其他人的App打包到我们的App里，直接拖入项目，在打包和提交App Store的时候，Xcode会对子App重新签名，经测试可正常运行。
 
+
+
 说到签名，不得不赞一下Xcode的改进，极大的提高了开发效率。几年前我们还经常需要花时间去处理`Provisioning Profile`, `Certificate`，`Entitlement`等一堆问题，现在程序员基本上不需要去管这些问题了。

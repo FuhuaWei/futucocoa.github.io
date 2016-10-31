@@ -53,12 +53,15 @@ NSRunningApplication *clientRunningApp = [[NSWorkspace sharedWorkspace]
 BOOL terminated = [clientRunningApp terminate];
 terminated = [clientRunningApp forceTerminate];
 ```
+
 ### 登录项启动
+
 通过将子App加入到系统`登录项`，用户每次启动系统都自动打开子App进程。这种方式要求没有独立的菜单、Dock图标，可以在App的`Info.plist`中配置`LSUIElement`即`Application is agent (UIElement)`为YES。
 然后用`SMLoginItemSetEnabled`方法增加删除登录项。
 
 关于`LSUIElement`,`LSBackgroundOnly`配置可以看`NSApp`的注释说明
- ```
+
+```
 /* The following activation policies control whether and how an application may be activated.  They are determined by the Info.plist. */
 typedef NS_ENUM(NSInteger, NSApplicationActivationPolicy) {
     /* The application is an ordinary app that appears in the Dock and may have a user interface.  This is the default for bundled apps, unless overridden in the Info.plist. */
@@ -94,6 +97,7 @@ XPC有其独有的进程间通信方式，具体可以查看这些资料：[XPC�
 `Distributed Notifications`也有两套接口，Objective-C接口`NSDistributedNotificationCenter`跟经常使用的通知中心接口`NSNotificationCenter`类似，比较方便使用。
 
 如果没有附带userInfo，无论是否在沙盒模式下，都是能正常接收到通知的
+
 ```
 //发送端
 [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"FTNiuniu" object:@"Object"];
@@ -102,7 +106,9 @@ XPC有其独有的进程间通信方式，具体可以查看这些资料：[XPC�
 [[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(onNotify:) name:@"FTNiuniu" object:nil];
 
 ```
+
 但如果附带了userInfo后, 在沙盒模式下则会失败
+
 ```
 [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"FTNiuniu" object:@"Object" userInfo:@{@"key":@"value"}];
 //提示错误 *** attempt to post distributed notification 'FTNiuniu' thwarted by sandboxing.
@@ -110,6 +116,7 @@ XPC有其独有的进程间通信方式，具体可以查看这些资料：[XPC�
 
 ### Distributed Objects
 `Distributed Objects`的使用比较简单，服务端创建并注册一个服务`NSConnection`，指定一个服务名称`FileReader`, 指定一个服务处理实例`_reader`。
+
 ```
 @protocol FileReader
 - (NSString *) getFile: (NSString *)fileName;
@@ -135,6 +142,7 @@ if ([_connection registerName:@"FileReader"] == NO) {
 ```
 
 客户端根据服务名称获取到服务实例，根据协议调用方法即可
+
 ```
 @protocol FileReader
 - (NSString *)getFile: (NSString *)fileName;

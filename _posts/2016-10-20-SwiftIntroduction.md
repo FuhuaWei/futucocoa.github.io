@@ -9,7 +9,7 @@ author: deger
 # Swift特性介绍
  - 本指引适合有经验的`Objective C`开发者。
  - 本指引并不适合Swift入门学习，只是想说说Swift的特点-简练、灵活、安全
- - 本指引代码可在Swift 3环境下运行
+ - [本指引代码](/assets/2016-10-20-SwiftIntroduction.playground.zip)可在Swift 3环境下运行
 
  Swift语言确实是吸取了各种语言的优点，很容易找到`Ruby`、`Python`、`Java`、`Lisp`的影子，相比Objective C，更现代，更优雅，更强大。
  Swift除了用来开发苹果应用，还可以用来开发网站、开发后台服务，甚至Android应用。
@@ -47,7 +47,10 @@ print(result)
 ```
 
 ## Swift非常灵活
+
 ### 枚举可以定义非纯整数值类型，还可以实现协议
+
+
 ```
 enum Rank: Int {
     case ace = 1
@@ -68,6 +71,7 @@ let failureRsp = ServerResponse.failure(404, "Page Not Found")
 ```
 
 ### `Switch`可以用于枚举、字符串、字符、元组
+
 ```
 switch failureRsp {
 case let .result(string):
@@ -102,6 +106,7 @@ case let (x, y):
 
 ### 闭包(Closure)，函数类型，高阶函数
 下面以数组排序方法为例，数组排序方法`sort`接受类型为`(String, String) -> Bool`函数作为参数
+
 ```
 let names = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
 
@@ -154,7 +159,9 @@ b //1
 
 
 ## Swift尽可能保证安全性，除非你人为放弃
-### 增加`可选值类型（Optional Value`），显性处理`nil`的情况
+
+### 增加`可选值类型（Optional Value）`，显性处理`nil`的情况
+
 类型后面有问号的才能设置成`nil`，对应oc里面的`nullable`。类型后面没有问号的属性必需在类初始化完时已经赋值。
 
 ```
@@ -200,19 +207,26 @@ let roomCount = john.house?.numberOfRooms
 ### 严格区分`值(Value)`和`引用(Reference)`
 值包括枚举和`Struct`。数据模型，`Array`，`Dictionary`用`Struct`定义，可以安全的在多线程间传递
 [Value and Reference Types](https://developer.apple.com/swift/blog/?id=10)
+
 ```
 let fruits = ["Apple", "Banana"]
 var f2 = fruits
 f2[0] = "Watermelon"
 print(fruits, f2)
+```
 
 ### 严格区分`常量(constant)`,`变量(variable)`
 常量用`let`定义，变量用`var`定义
+
+```
 var color = #colorLiteral(red: 0.4392156899, green: 0.01176470611, blue: 0.1921568662, alpha: 1)
 color = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1) //change to let will fail
+```
 
 ### 严格区分类型，类型之间不会隐性转化
 布尔值只有`true`，`false`，不会自动将`Int`转成`Bool`
+
+```
 let int = 1
 if int != 0 {
     print("true")
@@ -236,5 +250,4 @@ if int != 0 {
 - [Swift:利用Enum灵活映射多重类型Data model](http://www.open-open.com/lib/view/open1471761759386.html)
 - [Swift 中 10 个震惊小伙伴的单行代码](http://www.techug.com/utm_sourcetuicoolutm_)
 - [Advanced Swift中文版](http://www.jianshu.com/notebooks/2383569/latest)
-
 - [Protocol-Oriented Programming in Swift](https://developer.apple.com/videos/play/wwdc2015/408/)
