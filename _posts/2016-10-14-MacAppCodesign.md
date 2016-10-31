@@ -21,10 +21,12 @@ author: deger
 ```
 
 有些App包含了子App、动态库，需要增加参数`--deep`，即`codesign --deep -f -s`，否则会出现类似错误
+
 ```
 FutuNiuniu.app: code object is not signed at all
 In subcomponent: /Applications/FutuNiuniu.app/Contents/Frameworks/FTTrade.framework
 ```
+
 如果出现`resource fork, finder information, or similar detritus not allowed`错误，可以参数运行`xattr -rc FutuNiuniu.app`, 相关说明看[这里](http://stackoverflow.com/questions/37830758/code-signing-error-whenever-i-try-replacing-stock-files-in-new-scenekit-applicat)
 
 
@@ -37,6 +39,7 @@ In subcomponent: /Applications/FutuNiuniu.app/Contents/Frameworks/FTTrade.framew
 `FutuNiuniu.app code object is not signed at all`
 
 对于已签名的App，使用参数`-vvv`会有略详细的输出结果，如果使用参数`-dvvv`会有非常详细的签名情况
+
 ```
 ➜  codesign -dvvv FutuNiuniu.app
 Executable=/Applications/FutuNiuniu.app/Contents/MacOS/FutuNiuniu
@@ -59,6 +62,7 @@ Internal requirements count=1 size=208
 ```
 
 假设我们修改已签名的App，比如我们修改QQ音乐`Info.plist`里面的版本号`CFBundleShortVersionString`的值，再检查签名。
+
 ```
 ➜  vi QQMusic.app/Contents/Info.plist 
 ➜  codesign -v QQMusic.app
@@ -68,11 +72,13 @@ In architecture: x86_64
 ➜  open QQMusic.app 
 LSOpenURLsWithRole() failed with error -10810 for the file /Applications/QQMusic.app.
 ```
+
 签名不合法了，此时再去打开这个App，系统会弹窗提示错误`Sandbox registration failed: The code signature is not valid: The operation couldn’t be completed. (OSStatus error -67030.)`。
 
 ## 重新签名
 
 对于上面的修改过的QQ音乐，我们可以通过重新签名，又可以让应用运行起来。强制重新签名需要增加参数`-f`
+
 ```
 ➜  codesign -f -s "Developer ID Application: Shenzhen Futu Network Technology Company Limited" QQMusic.app 
 QQMusic.app: replacing existing signature
@@ -82,6 +88,7 @@ Password:
 QQMusic.app: replacing existing signature
 ➜  open QQMusic.app 
 ```
+
 也就是说`App Store`里的很多应用，都可以修改里面的资源文件，甚至代码，重新打包签名，并对外发布。有没有细思极恐，Mac应用跟Android一样也是可以重新打包发布的。之前出现过的[XcodeGhost风波](https://zh.wikipedia.org/wiki/XcodeGhost风波)，就有很多国内互联网大公司中招。
 
 那么怎么避免我们的程序被再打包，这个安全问题我们下次再讲（调皮脸）
