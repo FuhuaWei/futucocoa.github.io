@@ -6,7 +6,7 @@ categories: swift
 author: deger
 
 ---
-# 使用Swift替代复杂Bash脚本
+
 
 作为一个程序员，所有例行性、重复性工作都应该尽可能考虑用脚本去完成。比如每日编译，应用打包，代码拉取等。
 

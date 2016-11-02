@@ -8,7 +8,6 @@ author: deger
 ---
 
 
-## 函数式反应型编程
 首先来了解一下函数式反应型编程Functional Reactive Programming
 
 函数式反应型编程是两个声明式编程的子范例(`函数式`+`反应式`)的组合

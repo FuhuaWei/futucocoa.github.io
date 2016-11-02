@@ -6,7 +6,7 @@ categories: swift
 author: deger
 
 ---
-# Swift特性介绍
+
  - 本指引适合有经验的`Objective C`开发者。
  - 本指引并不适合Swift入门学习，只是想说说Swift的特点-简练、灵活、安全
  - [本指引代码](/assets/2016-10-20-SwiftIntroduction.playground.zip)可在Swift 3环境下运行

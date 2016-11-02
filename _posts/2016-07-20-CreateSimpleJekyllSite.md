@@ -77,6 +77,18 @@ author: deger
 
 新增一篇文章，刷新网站就可以看到文章了。
 
+## 增加Google统计
+
+到[Google Analytics](https://analytics.google.com/analytics/)注册一个账号，获取跟踪ID，类似UA-867248**-*。在_config.yml增加行即可
+
+```
+google_analytics: UA-867248**-*
+```
+
+## 使用新皮肤
+
+使用[Beautiful Jekyll](https://github.com/daattali/beautiful-jekyll)，将代码clone下来，除_posts, _drafts外，全部覆盖。
+
 ## TODO
 - 增加作者介绍页面
 - 按分类展示文章列表
