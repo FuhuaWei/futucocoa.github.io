@@ -19,3 +19,5 @@ link2_name: "富途牛牛下载地址"
 link2_url: "https://itunes.apple.com/cn/app/fu-tu-niu-niu-gu-gang-gu-mei/id664513913?mt=12"
 # Build settings
 markdown: kramdown
+google_analytics: UA-86724813-1
+	
