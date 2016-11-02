@@ -2,7 +2,7 @@
 layout: post
 title:  "macOS多进程研究"
 date:   2016-09-27 16:21:50 +0800
-categories: macOS
+tags: [macOS]
 author: deger
 
 ---

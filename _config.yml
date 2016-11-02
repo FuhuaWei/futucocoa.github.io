@@ -14,11 +14,11 @@ baseurl: ""
 # Of course don't forget to change the username and projectname to YOUR username and project
 
 # Name of website
-title: 富途Cocoa开发技术博客
+title: 富途Cocoa组开发技术博客
 
 # Short description of your site
 description: > 
-  富途证券研发部Mac开发组技术博客，我们开发了大陆区Mac App Store财经类免费版、收费版第一应用－富途牛牛。
+  富途研发部Mac开发组技术博客，我们开发了大陆区Mac App Store财经类免费版、收费版第一应用－富途牛牛。
 
 
 # --- Navigation bar options --- #
@@ -100,7 +100,7 @@ excerpt_length: 100
 # --- Don't need to touch anything below here (but you can if you want) --- #
 
 # Output options (more information on Jekyll's site)
-timezone: "America/Vancouver"
+timezone: "Asia/Beijing"
 markdown: kramdown
 highlighter: rouge
 permalink: /:year-:month-:day-:title/
@@ -127,7 +127,7 @@ defaults:
       show-avatar: true
 
 # Use tags pages (not recommended if you are deploying via GitHub pages, only set to true if deploying locally with ruby)
-link-tags: false
+link-tags: true
 
 # Exclude these files from production site
 exclude:

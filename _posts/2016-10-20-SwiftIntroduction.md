@@ -2,7 +2,7 @@
 layout: post
 title:  "Swift特性介绍"
 date:   2016-10-20 15:00:34 +0800
-categories: swift
+tags: [swift]
 author: deger
 
 ---

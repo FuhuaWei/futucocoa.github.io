@@ -2,7 +2,7 @@
 layout: post
 title:  "ReactiveCocoa基础"
 date:   2016-07-22 21:25:50 +0800
-categories: ObjC
+tags: [macOS, ObjC]
 author: deger
 
 ---

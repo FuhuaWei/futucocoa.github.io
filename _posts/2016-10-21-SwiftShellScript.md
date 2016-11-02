@@ -2,7 +2,7 @@
 layout: post
 title:  "使用Swift替代复杂Bash脚本"
 date:   2016-10-21 10:10:11 +0800
-categories: swift
+tags: [swift, shell]
 author: deger
 
 ---

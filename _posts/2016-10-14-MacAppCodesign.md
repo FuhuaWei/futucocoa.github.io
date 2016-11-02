@@ -2,7 +2,7 @@
 layout: post
 title:  "Mac App 签名"
 date:   2016-10-14 13:18:01 +0800
-categories: macOS
+tags: [macOS, shell]
 author: deger
 
 ---
