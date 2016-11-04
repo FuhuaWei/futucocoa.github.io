@@ -76,13 +76,13 @@ LSOpenURLsWithRole() failed with error -10810 for the file /Applications/QQMusic
 
 ## 重新签名
 
-对于上面的修改过的QQ音乐，我们可以通过重新签名，又可以让应用运行起来。强制重新签名需要增加参数`-f`
+对于上面的修改过的QQ音乐，我们可以通过重新签名，又可以让应用运行起来。强制重新签名需要增加参数`-f`，另外要保留原来的沙盒属性，需要增加参数`--preserve-metadata`。
 
 ```
-➜  codesign -f -s "Developer ID Application: Shenzhen Futu Network Technology Company Limited" QQMusic.app 
+➜  codesign -f --preserve-metadata -s "Developer ID Application: Shenzhen Futu Network Technology Company Limited" QQMusic.app 
 QQMusic.app: replacing existing signature
 QQMusic.app: Permission denied
-➜  sudo codesign -f -s "Developer ID Application: Shenzhen Futu Network Technology Company Limited" QQMusic.app
+➜  sudo codesign -f --preserve-metadata -s "Developer ID Application: Shenzhen Futu Network Technology Company Limited" QQMusic.app
 Password:
 QQMusic.app: replacing existing signature
 ➜  open QQMusic.app 
@@ -90,7 +90,6 @@ QQMusic.app: replacing existing signature
 
 也就是说`App Store`里的很多应用，都可以修改里面的资源文件，甚至代码，重新打包签名，并对外发布。有没有细思极恐，Mac应用跟Android一样也是可以重新打包发布的。之前出现过的[XcodeGhost风波](https://zh.wikipedia.org/wiki/XcodeGhost风波)，就有很多国内互联网大公司中招。
 
-那么怎么避免我们的程序被再打包，这个安全问题我们下次再讲（调皮脸）
 
 其实Xcode也很好的实现了重新签名的工作，如果我们要把其他人的App打包到我们的App里，直接拖入项目，在打包和提交App Store的时候，Xcode会对子App重新签名，经测试可正常运行。
 
