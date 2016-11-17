@@ -7,13 +7,14 @@ author: deger
 
 ---
 
-
+团队博客搭建基本完成，deger也试用了一段时间。之前的团队分享都是放在内网gitlab，现在可以开始往外发，简单整理了一个文章发表指引供大家参考。
 
 ## 拉取Github代码库
 
 1. 加入Github组织，将账户邮箱发给管理员申请加入
-2. 加入组织后，拉取Github库：`git clone https://github.com/FutuCocoa/futucocoa.github.io.git Blog`
-3. 在Blog文件夹中运行`bundle exec jekyll serve`
+2. 管理在Github组织设置页面邀请后，被邀请人需要到邮箱点击确认邮件
+3. 拉取Github库：`git clone https://github.com/FutuCocoa/futucocoa.github.io.git Blog`
+4. 在Blog文件夹中运行`bundle exec jekyll serve`
 
 ## 撰写文章
 
@@ -51,6 +52,5 @@ author: deger
 
 1. 将图片等附件资源放到`assets`文件夹，如图片多的可以创建文件夹，按规则命名`yyyy-mm-dd-**`，方便识别
 2. 假设图片名称为`2016-11-17-test.png`, 在文章中引用地址为`/assets/2016-11-17-test.png`
-
 
 
