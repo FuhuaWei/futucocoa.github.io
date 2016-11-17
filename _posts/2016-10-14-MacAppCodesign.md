@@ -79,10 +79,10 @@ LSOpenURLsWithRole() failed with error -10810 for the file /Applications/QQMusic
 对于上面的修改过的QQ音乐，我们可以通过重新签名，又可以让应用运行起来。强制重新签名需要增加参数`-f`，另外要保留原来的沙盒属性，需要增加参数`--preserve-metadata`。
 
 ```
-➜  codesign -f --preserve-metadata -s "Developer ID Application: Shenzhen Futu Network Technology Company Limited" QQMusic.app 
+➜  codesign -f --preserve-metadata=entitlements -s "Developer ID Application: Shenzhen Futu Network Technology Company Limited" QQMusic.app 
 QQMusic.app: replacing existing signature
 QQMusic.app: Permission denied
-➜  sudo codesign -f --preserve-metadata -s "Developer ID Application: Shenzhen Futu Network Technology Company Limited" QQMusic.app
+➜  sudo codesign -f --preserve-metadata=entitlements -s "Developer ID Application: Shenzhen Futu Network Technology Company Limited" QQMusic.app
 Password:
 QQMusic.app: replacing existing signature
 ➜  open QQMusic.app 

@@ -162,13 +162,20 @@ NSString *file = [_reader getFile:@"test"];
 
 然而`Distributed Objects`并不支持沙盒，开启沙盒之后无法创建服务。
 
+### TCP连接
+
+通过创建TCP连接来通信
+
 ### AppleEvents & AppleScript
 `AppleEvents`和`AppleScript`能很好的支持进程间通信。让一个应用支持`AppleScript`可以参考苹果官方文档[AppleScript Overview - Scriptable Applications](https://developer.apple.com/library/content/documentation/AppleScript/Conceptual/AppleScriptX/Concepts/scriptable_apps.html)
 
 ### Pasteboard
+
 剪贴板是OS X与iOS最常见的进程间通信机制，适用于文字、图片、文档的数据交换，不能作为一般信息的传递。
 
+### 文件共享
 
+同一个App Group可共享文件
 
 ## 资料
 
