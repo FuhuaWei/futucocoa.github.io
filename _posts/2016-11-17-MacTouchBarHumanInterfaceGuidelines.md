@@ -1,13 +1,13 @@
 ---
 layout: post
 title:  "[译]Mac触摸栏人机界面指南"
-date:   2016-10-21 10:10:11 +0800
+date:   2016-11-17 10:10:11 +0800
 tags: [mac]
 author: bob,fallor,janisa,kamal,owen
 
 ---
 
-本文翻译自苹果官方的[Mac Touch Bar Human Interface Guidelines](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/AbouttheTouchBar.html#//apple_ref/doc/uid/20000957-CH104-SW1)，辛苦团队成员`bob`, `fallor`, `janisa`, `kamal`, `owen`等同事。
+本文翻译自苹果官方的[Mac Touch Bar Human Interface Guidelines](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/AbouttheTouchBar.html#//apple_ref/doc/uid/20000957-CH104-SW1)，辛苦团队成员`bob`, `fallor`, `janisa`, `kamal`, `owen`等同事。文章已经翻译完很久，今天才有时间整理外发。
 
 ##  1, Touch Bar概述
 
