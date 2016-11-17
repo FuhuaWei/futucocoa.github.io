@@ -2,7 +2,7 @@
 layout: post
 title:  "团队Jekyll技术博客搭建"
 date:   2016-07-20 17:25:50 +0800
-categories: 团队建设
+tags: [macOS, shell]
 author: deger
 
 ---
@@ -51,7 +51,7 @@ author: deger
 
 ## 撰写文章
 
-`_posts`文件夹已经由样例文章，文件名称格式为`年-月-日-文章标题`，后缀名支持md、markdown、texttile等等。
+`_posts`文件夹已经有样例文章，文件名称格式为`年-月-日-文章标题`，后缀名支持md、markdown、texttile等等。
 
 文章顶部需要对文章做一些说明，格式如下
 
@@ -63,6 +63,7 @@ layout: post
 title:  "开篇序言" 
 date:   2016-07-15 17:25:50 +0800
 categories: 团队建设
+tags: [team]
 author: deger
 
 ---
@@ -72,7 +73,8 @@ author: deger
 - `layout` 指定使用的模版，`post`即使用_layouts/post.html
 - `title` 显示的标题
 - `date` 文章撰写的时间，这个时间必须小于当前时间文章才会显示
-- `categories` 文章分类
+- `categories` 文章分类, 多个则使用[]，比如[swift, mac]
+- `tags` 标签
 - `author` 文章作者
 
 新增一篇文章，刷新网站就可以看到文章了。
