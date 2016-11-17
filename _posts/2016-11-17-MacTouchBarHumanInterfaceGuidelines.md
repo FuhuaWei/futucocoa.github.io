@@ -9,28 +9,16 @@ author: bob,fallor,janisa,kamal,owen
 
 本文翻译自苹果官方的[Mac Touch Bar Human Interface Guidelines](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/AbouttheTouchBar.html#//apple_ref/doc/uid/20000957-CH104-SW1)，辛苦团队成员`bob`, `fallor`, `janisa`, `kamal`, `owen`等同事。
 
-## 目录
-
-
-- [关于触摸栏](# Touch Bar概述)
-- [交互设计](# 交互设计)
-- [视觉设计](# 视觉设计)
-- [图标](# 图标)
-- [Controller 控件](#Controller)
-
-
-##  Touch Bar概述
+##  1, Touch Bar概述
 
 
 触摸栏位于最新款的MacBookPro键盘上方，是一个高清触摸屏，提供与主屏幕内容交互的动态界面控件。这些控件可根据当前上下文快速访问系统级和应用程序特定的功能。例如，当用户在文档中输入文本时，触摸栏可用于修改字体和调整字号。当用户查看地图时，触摸栏可以快速访问附近的加油站，住宿和餐馆等。触摸栏最右侧的Touch ID传感器跟iPhone上的Home键类似，支持指纹登录、购买App和Apple Pay支付。
 
-![touch bar hero][]
-[touch bar hero]:https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touchbar_hero_2x.png
+![touch bar hero](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touchbar_hero_2x.png)
 
 默认情况下，位于Touch Bar右侧的可扩展控件条（Control Strip）中包含了系统级操作的控件，如唤起Siri、调整主屏幕的亮度及音量等。而在此之前，用户是通过物理按键进行大多数的此类操作。你可以在位于控件条左侧的应用程序区域中，写入特定的应用控件。Esc（退出键）或其他系统按键会根据当前情况出现在应用区域的左侧。
 
-![touch bar][]
-[touch bar]:https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touch_bar_2x.png
+![touch bar](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touch_bar_2x.png)
 
 Touch Bar是可配置的。用户可以从控件条中移除功能，甚至将其完全隐藏。在隐藏状态下，仅显示应用控件。用户也可以隐藏应用程序区域，只显示扩展的控制条。有些应用也允许用户在应用区域中添加或删除操作。
 
@@ -60,14 +48,7 @@ Touch Bar是可配置的。用户可以从控件条中移除功能，甚至将�
 
 **避免将Touch Bar上的交互行为镜像显示到主屏幕上。**例如，如果用户在Touch Bar中点击了按钮并显示了其选项列表，这些选项不应在主屏幕上显示。
 
-### 参考链接
-
-- [NSTouchBar](https://translate.googleusercontent.com/translate_c?depth=1&hl=zh-CN&rurl=translate.google.com.hk&sl=en&tl=zh-CN&u=https://developer.apple.com/reference/appkit/nstouchbar&usg=ALkJrhj-WeOCTTB0rHNCxJr18AaQWL_MoQ)
-- [Xcode Help](https://translate.googleusercontent.com/translate_c?depth=1&hl=zh-CN&rurl=translate.google.com.hk&sl=en&tl=zh-CN&u=https://help.apple.com/xcode&usg=ALkJrhjH0DQ8cAjCFvCpkzLoS2PNsP9esA)
-- [Controls](https://translate.googleusercontent.com/translate_c?depth=1&hl=zh-CN&rurl=translate.google.com.hk&sl=en&tl=zh-CN&u=https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/ControlsandViews.html&usg=ALkJrhhPDP9U_y-Wrv0kIsVl0dfnlRaZ1A#//apple_ref/doc/uid/20000957-CH108-SW1)
-
-
-## 交互设计
+## 2, 交互设计
 
 
 ### 无障碍访问
@@ -103,7 +84,7 @@ macOS为视障、听障和其他障碍用户提供了大量的无障碍访问功
 **多点触控**。虽然Touch Bar的确能够响应捏合操作等多点触控操作，但多点触控是很累赘的操作，应该谨慎使用。
 
 
-## 视觉设计
+## 3, 视觉设计
 
 
 ### 动画
@@ -126,23 +107,20 @@ macOS定义了一系列系统颜色，用来动态匹配标准接口控件（如
 **优先使用标准控件和系统图标。**标准控件和系统图标早已在Touch Bar上有了较为完善的色彩设计。具体请参照图标章节。
 **少而精地使用色彩。**一般来说，Touch Bar应该和传统的物理键盘在外观上是一致的。单色模式应该是最好的选择。如果必须在控件中使用颜色，就要选择高雅些的颜色，并且在表示短暂、临时的状态时使用。不能过度使用颜色，也不能使用在不合适的地方。
 
-![touch bar monochrome][]
+![touch bar monochrome](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touchbar_monochrome_2x.png)
 
 **用颜色凸显重要信息。**颜色能让人注意到重要的控件。保留蓝色用于默认控件，红色则保留用于警告型控件。
 **在使用颜色时，选择一个与你的应用协调且有限的调色板。**巧妙颜色使用是宣传品牌的一种方式。
 
-![touch bar branding 2x][]
+![touch bar branding 2x](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touchbar_branding_2x.png)
 
 **提供色域广泛的设计稿。**Touch Bar可以支持P3色域，与sRGB相比，这种色域产生的颜色更丰富也更饱和。在16bits像素通道上使用Display P3呈现外形色彩并以.png的格式导出插图。
 
-[touch bar branding 2x]:https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touchbar_branding_2x.png
-[touch bar monochrome]:https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touchbar_monochrome_2x.png
 ### 布局
 
 Touch Bar的触摸区域（除去Touch ID的传感区后）的宽是2170px，高是60px。因为Touch Bar是高分辨率Retina屏幕，所以等同于宽1085pt高30pt。
 
-![touch bar layout total 2x][]
-[touch bar layout total 2x]:https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touchbar_layout_total_2x.png
+![touch bar layout total 2x](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touchbar_layout_total_2x.png)
 
 #### Touch Bar的区域
 
@@ -205,13 +183,8 @@ Touch Bar的触摸区域（除去Touch ID的传感区后）的宽是2170px，高
 
 Touch Bar使用的是San Francisco字体的一种变体，即macOS中的系统字体。此字体已针对易读性，清晰度和一致性进行了优化。它也匹配物理键盘的字体。标准Touch Bar控件（如按钮和分段控件）会自动使用此字体。要了解如何在应用程序中编程应用系统字体，请参阅字体格式设置的参考文档。
 
-### 参考链接
 
-- [系统颜色](https://translate.googleusercontent.com/translate_c?depth=1&hl=zh-CN&rurl=translate.google.com.hk&sl=en&tl=zh-CN&u=https://developer.apple.com/reference/appkit/nscolor&usg=ALkJrhhc-zQlu_iEki1nVg-M6qFHARFHbA)
-- [字体格式设置](https://translate.googleusercontent.com/translate_c?depth=1&hl=zh-CN&rurl=translate.google.com.hk&sl=en&tl=zh-CN&u=https://developer.apple.com/reference/appkit/nsfont&usg=ALkJrhjZxRSQSc2HfV2W_Nk721SnRykjig)
-
-
-## 图标
+## 4, 图标
 
 
 ### 图片尺寸和分辨率
@@ -284,83 +257,83 @@ Touch Bar中的图标的显示应与物理键盘按键上的文字的显示一�
 
 表格 46-1 Touch Bar 的系统图标
 
-|图标 |图标名称 |AppKit符号 |功能|
+|图标 |图标名称 |AppKit符号|功能|
 |:-:|:----|:----|:----|
-|![TB_adddetail_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_adddetail_2x.png)|添加详细信息 |NSImageNameTouchBarAddDetailTemplate|显示项目的更多细节。 
-|![TBAddd 2x](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_add_2x.png)|添加 |NSImageNameTouchBarAddTemplate|创建一个新的项目。 
-|![TBAlarm 2x](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_alarm_2x.png)|报警 |NSImageNameTouchBarAlarmTemplate|设置或显示报警。 
-|![TBAudioinputmute 2x](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_audioinputmute_2x.png)|音频输入静音 |NSImageNameTouchBarAudioInputMuteTemplate|静音音频输入或表示音频输入静音。 
-|![TBAudioinput 2x](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_audioinput_2x.png)|音频输入 |NSImageNameTouchBarAudioInputTemplate|表示音频输入。 
-|![TB_audiooutputmute_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_audiooutputmute_2x.png)|音频输出静音 |NSImageNameTouchBarAudioOutputMuteTemplate|静音音频输出，或表示音频输出静音。 
-|![TB_audiooutputvolumehigh_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_audiooutputvolumehigh_2x.png)|音频输出音量高 |NSImageNameTouchBarAudioOutputVolumeHighTemplate|设置音频输出音量为高或表示该音频输出音量被设定为高。 
-|![TB_audiooutputvolumelow_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_audiooutputvolumelow_2x.png)|音频输出音量低 |NSImageNameTouchBarAudioOutputVolumeLowTemplate|设置音频输出音量为低或表示该音频输出音量设置为低。 
-|![TB_audiooutputvolumemedium_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_audiooutputvolumemedium_2x.png)|音频输出音量中等 |NSImageNameTouchBarAudioOutputVolumeMediumTemplate|设置音频输出音量为中或表示该音频输出音量被设定为中等。 
-|![TB_audiooutputvolumeoff_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_audiooutputvolumeoff_2x.png)|音频输出音量关闭 |NSImageNameTouchBarAudioOutputVolumeOffTemplate|关闭音频输出或者表示音频输出被关闭。 
-|![TB_bookmarks_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_bookmarks_2x.png)|书签 |NSImageNameTouchBarBookmarksTemplate|显示应用程序特定的书签。 
-|![TB_colorpickerfill_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_colorpickerfill_2x.png)|颜色选择填充 |NSImageNameTouchBarColorPickerFill|显示颜色选择器，用户可以选择一种填充颜色。 
-|![TB_colorpickerfont_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_colorpickerfont_2x.png)|字体颜色选择器|NSImageNameTouchBarColorPickerFont|显示颜色选择器，使用户可以选择文本颜色。 
-|![TB_colorpickerstroke_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_colorpickerstroke_2x.png)|描边颜色选择器 |NSImageNameTouchBarColorPickerStroke|显示颜色选择器，使用户可以选择描边颜色。 
-|![TB_communicationaudio_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_communicationaudio_2x.png)|通信音频 |NSImageNameTouchBarCommunicationAudioTemplate|启动或表示音频通信。 
-|![TB_communicationvideo_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_communicationvideo_2x.png)|视频通信 |NSImageNameTouchBarCommunicationVideoTemplate|发起或表示视频通信。 
-|![TB_compose_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_compose_2x.png)|撰写 |NSImageNameTouchBarComposeTemplate|在编辑模式下打开一个新的文档或视图。 
-|![TB_delete_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_delete_2x.png)|删除 |NSImageNameTouchBarDeleteTemplate|删除当前或所选项目。 
-|![TB_download_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_download_2x.png)|下载 |NSImageNameTouchBarDownloadTemplate|下载项目。 
-|![TB_enterfullscreen_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_enterfullscreen_2x.png)|进入全屏模式 |NSImageNameTouchBarEnterFullScreenTemplate|进入全屏模式。 
-|![TB_exitfullscreen_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_exitfullscreen_2x.png)|退出全屏 |NSImageNameTouchBarExitFullScreenTemplate|退出全屏模式。 
-|![TB_fastforward_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_fastforward_2x.png)|快进 |NSImageNameTouchBarFastForwardTemplate|媒体播放或幻灯片快进。 
-|![TB_foldercopyto_2x.pngg](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_foldercopyto_2x.png)|文件夹拷贝到 |NSImageNameTouchBarFolderCopyToTemplate|复制项目到目标位置。 
-|![TB_foldermoveto_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_foldermoveto_2x.png)|文件夹移动到 |NSImageNameTouchBarFolderMoveToTemplate|移动项目到新的目标位置。 
-|![TB_folder_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_folder_2x.png)|文件夹 |NSImageNameTouchBarFolderTemplate|打开或显示一个文件夹。 
-|![TB_getinfo_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_getinfo_2x.png)|获取信息 |NSImageNameTouchBarGetInfoTemplate|显示有关项目的其他信息。 
-|![TB_goback_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_goback_2x.png)|返回 |NSImageNameTouchBarGoBackTemplate|返回到上一个屏幕或位置。 
-|![TB_godown_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_godown_2x.png)|向下 |NSImageNameTouchBarGoDownTemplate|移动到下一个垂直项目。 
-|![TB_goforward_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_goforward_2x.png)|前进 |NSImageNameTouchBarGoForwardTemplate|移动到下一个屏幕或位置。 
-|![TB_goup_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_goup_2x.png)|向上 |NSImageNameTouchBarGoUpTemplate|移动到前一个垂直项目。 
-|![TB_history_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_history_2x.png)|历史 |NSImageNameTouchBarHistoryTemplate|显示的历史信息，如最近的下载。 
-|![TB_iconview_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_iconview_2x.png)|图标视图 |NSImageNameTouchBarIconViewTemplate|显示图标视图中的项目。 
-|![TB_listview_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_listview_2x.png)|列表显示 |NSImageNameTouchBarListViewTemplate|在列表中显示视图中的项目。 
-|![TB_mail_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_mail_2x.png)|邮件 |NSImageNameTouchBarMailTemplate|创建一个电子邮件。 
-|![TB_newfolder_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_newfolder_2x.png)|新文件夹 |NSImageNameTouchBarNewFolderTemplate|创建一个新的文件夹。 
-|![TB_newmessage_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_newmessage_2x.png)|新消息 |NSImageNameTouchBarNewMessageTemplate|创建一个新的消息或者表示使用消息传递。 
-|![TB_openinbrowser_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_openinbrowser_2x.png)|在浏览器中打开 |NSImageNameTouchBarOpenInBrowserTemplate|在用户的浏览器中打开一个项目。 
-|![TB_pause_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_pause_2x.png)|暂停 |NSImageNameTouchBarPauseTemplate|暂停播放媒体或幻灯片。暂停时，请务必保存当前的位置，以便以后可以恢复播放。 
-|![TB_playpause_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_playpause_2x.png)|播放或暂停 |NSImageNameTouchBarPlayPauseTemplate|媒体或幻灯片播放和暂停播放之间的切换。 
-|![TB_play_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_play_2x.png)|播放 |NSImageNameTouchBarPlayTemplate|开始或继续播放媒体或幻灯片。 
-|![TB_quicklook_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_quicklook_2x.png)|快速查看 |NSImageNameTouchBarQuickLookTemplate|在快速查看中打开一个项目。 
-|![TB_recordstart_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_recordstart_2x.png)|开始录制 |NSImageNameTouchBarRecordStartTemplate|开始录制。 
-|![TB_recordstop_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_recordstop_2x.png)|停止录制 |NSImageNameTouchBarRecordStopTemplate|停止录制或停止播放媒体或幻灯片。 
-|![TB_refresh_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_refresh_2x.png)|刷新 |NSImageNameTouchBarRefreshTemplate|刷新屏幕上的数据。 
-|![TB_rewind_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_rewind_2x.png)|倒退 |NSImageNameTouchBarRewindTemplate|媒体播放或幻灯片向后倒退。 
-|![TB_rotateleft_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_rotateleft_2x.png)|向左旋转 |NSImageNameTouchBarRotateLeftTemplate|向左旋转项目。 
-|![TB_rotateright_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_rotateright_2x.png)|向右旋转 |NSImageNameTouchBarRotateRightTemplate|向右旋转项目。 
-|![TB_search_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_search_2x.png)|搜索 |NSImageNameTouchBarSearchTemplate|显示一个搜索栏或启动搜索。 
-|![TB_share_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_share_2x.png)|分享 |NSImageNameTouchBarShareTemplate|与他人或向社交媒体分享内容。 
-|![TB_sidebar_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_sidebar_2x.png)|侧边栏 |NSImageNameTouchBarSidebarTemplate|在当前视图中显示边栏。 
-|![TB_skipahead15seconds_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_skipahead15seconds_2x.png)|快进15秒 |NSImageNameTouchBarSkipAhead15SecondsTemplate|在媒体播放时快进到15秒后的位置。 
-|![TB_skipahead30seconds_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_skipahead30seconds_2x.png)|快进30秒 |NSImageNameTouchBarSkipAhead30SecondsTemplate|在媒体播放时快进到30秒后的位置。 
-|![TB_skipahead_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_skipahead_2x.png)|快进 |NSImageNameTouchBarSkipAheadTemplate|媒体播放时快进到下一章或下一个位置。 
-|![TB_skipback15seconds_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_skipback15seconds_2x.png)|快退15秒 |NSImageNameTouchBarSkipBack15SecondsTemplate|媒体播放时快退到15秒前的时刻。 
-|![TB_skipback30seconds_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_skipback30seconds_2x.png)|快退30秒 |NSImageNameTouchBarSkipBack30SecondsTemplate|媒体播放时快退到30秒前的位置。 
-|![TB_skipback_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_skipback_2x.png)|快退 |NSImageNameTouchBarSkipBackTemplate|媒体播放时快退到上一章节或上一个位置。 
-|![TB_skiptoend_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_skiptoend_2x.png)|跳转到最结束 |NSImageNameTouchBarSkipToEndTemplate|媒体播放时跳到结束位置。 
-|![TB_skiptostart_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_skiptostart_2x.png)|跳转到启动 |NSImageNameTouchBarSkipToStartTemplate|媒体播放时跳到启动位置。 
-|![TB_slideshow_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_slideshow_2x.png)|幻灯片 |NSImageNameTouchBarSlideshowTemplate|开始放映幻灯片。 
-|![TB_tagicon_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_tagicon_2x.png)|标签图标 |NSImageNameTouchBarTagIconTemplate|在一个项目中应用标签。 
-|![TB_textbold_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_textbold_2x.png)|文本粗体 |NSImageNameTouchBarTextBoldTemplate|使文本加粗。 
-|![TB_textbox_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_textbox_2x.png)|文本框 |NSImageNameTouchBarTextBoxTemplate|插入一个文本框。 
-|![TB_textcenteralign_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_textcenteralign_2x.png)|文字居中对齐 |NSImageNameTouchBarTextCenterAlignTemplate|文本中心对齐。 
-|![TB_textitalic_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_textitalic_2x.png)|文字斜体 |NSImageNameTouchBarTextItalicTemplate|文字斜体。 
-|![TB_textjustifiedalign_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_textjustifiedalign_2x.png)|文本两边对齐 |NSImageNameTouchBarTextJustifiedAlignTemplate|调整文本，使文本左侧和右侧都对齐。 
-|![TB_textleftalign_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_textleftalign_2x.png)|文本左对齐 |NSImageNameTouchBarTextLeftAlignTemplate|左对齐文本。 
-|![TB_textlist_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_textlist_2x.png)|文本列表 |NSImageNameTouchBarTextListTemplate|插入列表或将文本转换为列表形式。 
-|![TB_textrightalign_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_textrightalign_2x.png)|文本右对齐 |NSImageNameTouchBarTextRightAlignTemplate|右对齐文本。 
-|![TB_textstrikethrough_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_textstrikethrough_2x.png)|文字删除线 |NSImageNameTouchBarTextStrikethroughTemplate|在文本中使用删除线。 
-|![TB_textunderline_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_textunderline_2x.png)|文字下划线 |NSImageNameTouchBarTextUnderlineTemplate|给文本添加下划线。 
-|![TB_useradd_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_useradd_2x.png)|添加用户 |NSImageNameTouchBarUserAddTemplate|创建一个新用户。 
-|![TB_usergroup_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_usergroup_2x.png)|用户组 |NSImageNameTouchBarUserGroupTemplate|显示或代表一组用户。 
-|![TB_user_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_user_2x.png)|用户 |NSImageNameTouchBarUserTemplate|显示或代表用户信息。 
-|![TB_volumedown_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_volumedown_2x.png)|降低音量 |NSImageNameTouchBarVolumeDownTemplate|降低音量。 
-|![TB_volumeup_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_volumeup_2x.png)|提高音量 |NSImageNameTouchBarVolumeUpTemplate|提高音量。 
+|![TB_adddetail_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_adddetail_2x.png)|添加详细信息 |AddDetail|显示项目的更多细节。 
+|![TBAddd 2x](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_add_2x.png)|添加 |Add|创建一个新的项目。 
+|![TBAlarm 2x](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_alarm_2x.png)|报警 |Alarm|设置或显示报警。 
+|![TBAudioinputmute 2x](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_audioinputmute_2x.png)|音频输入静音 |AudioInputMute|静音音频输入或表示音频输入静音。 
+|![TBAudioinput 2x](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_audioinput_2x.png)|音频输入 |AudioInput|表示音频输入。 
+|![TB_audiooutputmute_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_audiooutputmute_2x.png)|音频输出静音 |AudioOutputMute|静音音频输出，或表示音频输出静音。 
+|![TB_audiooutputvolumehigh_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_audiooutputvolumehigh_2x.png)|音频输出音量高 |AudioOutputVolumeHigh|设置音频输出音量为高或表示该音频输出音量被设定为高。 
+|![TB_audiooutputvolumelow_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_audiooutputvolumelow_2x.png)|音频输出音量低 |AudioOutputVolumeLow|设置音频输出音量为低或表示该音频输出音量设置为低。 
+|![TB_audiooutputvolumemedium_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_audiooutputvolumemedium_2x.png)|音频输出音量中等 |AudioOutputVolumeMedium|设置音频输出音量为中或表示该音频输出音量被设定为中等。 
+|![TB_audiooutputvolumeoff_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_audiooutputvolumeoff_2x.png)|音频输出音量关闭 |AudioOutputVolumeOff|关闭音频输出或者表示音频输出被关闭。 
+|![TB_bookmarks_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_bookmarks_2x.png)|书签 |Bookmarks|显示应用程序特定的书签。 
+|![TB_colorpickerfill_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_colorpickerfill_2x.png)|颜色选择填充 |ColorPickerFill|显示颜色选择器，用户可以选择一种填充颜色。 
+|![TB_colorpickerfont_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_colorpickerfont_2x.png)|字体颜色选择器|ColorPickerFont|显示颜色选择器，使用户可以选择文本颜色。 
+|![TB_colorpickerstroke_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_colorpickerstroke_2x.png)|描边颜色选择器 |ColorPickerStroke|显示颜色选择器，使用户可以选择描边颜色。 
+|![TB_communicationaudio_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_communicationaudio_2x.png)|通信音频 |CommunicationAudio|启动或表示音频通信。 
+|![TB_communicationvideo_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_communicationvideo_2x.png)|视频通信 |CommunicationVideo|发起或表示视频通信。 
+|![TB_compose_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_compose_2x.png)|撰写 |Compose|在编辑模式下打开一个新的文档或视图。 
+|![TB_delete_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_delete_2x.png)|删除 |Delete|删除当前或所选项目。 
+|![TB_download_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_download_2x.png)|下载 |Download|下载项目。 
+|![TB_enterfullscreen_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_enterfullscreen_2x.png)|进入全屏模式 |EnterFullScreen|进入全屏模式。 
+|![TB_exitfullscreen_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_exitfullscreen_2x.png)|退出全屏 |ExitFullScreen|退出全屏模式。 
+|![TB_fastforward_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_fastforward_2x.png)|快进 |FastForward|媒体播放或幻灯片快进。 
+|![TB_foldercopyto_2x.pngg](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_foldercopyto_2x.png)|文件夹拷贝到 |FolderCopyTo|复制项目到目标位置。 
+|![TB_foldermoveto_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_foldermoveto_2x.png)|文件夹移动到 |FolderMoveTo|移动项目到新的目标位置。 
+|![TB_folder_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_folder_2x.png)|文件夹 |Folder|打开或显示一个文件夹。 
+|![TB_getinfo_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_getinfo_2x.png)|获取信息 |GetInfo|显示有关项目的其他信息。 
+|![TB_goback_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_goback_2x.png)|返回 |GoBack|返回到上一个屏幕或位置。 
+|![TB_godown_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_godown_2x.png)|向下 |GoDown|移动到下一个垂直项目。 
+|![TB_goforward_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_goforward_2x.png)|前进 |GoForward|移动到下一个屏幕或位置。 
+|![TB_goup_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_goup_2x.png)|向上 |GoUp|移动到前一个垂直项目。 
+|![TB_history_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_history_2x.png)|历史 |History|显示的历史信息，如最近的下载。 
+|![TB_iconview_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_iconview_2x.png)|图标视图 |IconView|显示图标视图中的项目。 
+|![TB_listview_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_listview_2x.png)|列表显示 |ListView|在列表中显示视图中的项目。 
+|![TB_mail_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_mail_2x.png)|邮件 |Mail|创建一个电子邮件。 
+|![TB_newfolder_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_newfolder_2x.png)|新文件夹 |NewFolder|创建一个新的文件夹。 
+|![TB_newmessage_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_newmessage_2x.png)|新消息 |NewMessage|创建一个新的消息或者表示使用消息传递。 
+|![TB_openinbrowser_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_openinbrowser_2x.png)|在浏览器中打开 |OpenInBrowser|在用户的浏览器中打开一个项目。 
+|![TB_pause_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_pause_2x.png)|暂停 |Pause|暂停播放媒体或幻灯片。暂停时，请务必保存当前的位置，以便以后可以恢复播放。 
+|![TB_playpause_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_playpause_2x.png)|播放或暂停 |PlayPause|媒体或幻灯片播放和暂停播放之间的切换。 
+|![TB_play_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_play_2x.png)|播放 |Play|开始或继续播放媒体或幻灯片。 
+|![TB_quicklook_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_quicklook_2x.png)|快速查看 |QuickLook|在快速查看中打开一个项目。 
+|![TB_recordstart_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_recordstart_2x.png)|开始录制 |RecordStart|开始录制。 
+|![TB_recordstop_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_recordstop_2x.png)|停止录制 |RecordStop|停止录制或停止播放媒体或幻灯片。 
+|![TB_refresh_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_refresh_2x.png)|刷新 |Refresh|刷新屏幕上的数据。 
+|![TB_rewind_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_rewind_2x.png)|倒退 |Rewind|媒体播放或幻灯片向后倒退。 
+|![TB_rotateleft_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_rotateleft_2x.png)|向左旋转 |RotateLeft|向左旋转项目。 
+|![TB_rotateright_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_rotateright_2x.png)|向右旋转 |RotateRight|向右旋转项目。 
+|![TB_search_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_search_2x.png)|搜索 |Search|显示一个搜索栏或启动搜索。 
+|![TB_share_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_share_2x.png)|分享 |Share|与他人或向社交媒体分享内容。 
+|![TB_sidebar_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_sidebar_2x.png)|侧边栏 |Sidebar|在当前视图中显示边栏。 
+|![TB_skipahead15seconds_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_skipahead15seconds_2x.png)|快进15秒 |SkipAhead15Seconds|在媒体播放时快进到15秒后的位置。 
+|![TB_skipahead30seconds_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_skipahead30seconds_2x.png)|快进30秒 |SkipAhead30Seconds|在媒体播放时快进到30秒后的位置。 
+|![TB_skipahead_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_skipahead_2x.png)|快进 |SkipAhead|媒体播放时快进到下一章或下一个位置。 
+|![TB_skipback15seconds_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_skipback15seconds_2x.png)|快退15秒 |SkipBack15Seconds|媒体播放时快退到15秒前的时刻。 
+|![TB_skipback30seconds_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_skipback30seconds_2x.png)|快退30秒 |SkipBack30Seconds|媒体播放时快退到30秒前的位置。 
+|![TB_skipback_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_skipback_2x.png)|快退 |SkipBack|媒体播放时快退到上一章节或上一个位置。 
+|![TB_skiptoend_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_skiptoend_2x.png)|跳转到最结束 |SkipToEnd|媒体播放时跳到结束位置。 
+|![TB_skiptostart_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_skiptostart_2x.png)|跳转到启动 |SkipToStart|媒体播放时跳到启动位置。 
+|![TB_slideshow_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_slideshow_2x.png)|幻灯片 |Slideshow|开始放映幻灯片。 
+|![TB_tagicon_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_tagicon_2x.png)|标签图标 |TagIcon|在一个项目中应用标签。 
+|![TB_textbold_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_textbold_2x.png)|文本粗体 |TextBold|使文本加粗。 
+|![TB_textbox_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_textbox_2x.png)|文本框 |TextBox|插入一个文本框。 
+|![TB_textcenteralign_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_textcenteralign_2x.png)|文字居中对齐 |TextCenterAlign|文本中心对齐。 
+|![TB_textitalic_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_textitalic_2x.png)|文字斜体 |TextItalic|文字斜体。 
+|![TB_textjustifiedalign_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_textjustifiedalign_2x.png)|文本两边对齐 |TextJustifiedAlign|调整文本，使文本左侧和右侧都对齐。 
+|![TB_textleftalign_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_textleftalign_2x.png)|文本左对齐 |TextLeftAlign|左对齐文本。 
+|![TB_textlist_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_textlist_2x.png)|文本列表 |TextList|插入列表或将文本转换为列表形式。 
+|![TB_textrightalign_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_textrightalign_2x.png)|文本右对齐 |TextRightAlign|右对齐文本。 
+|![TB_textstrikethrough_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_textstrikethrough_2x.png)|文字删除线 |TextStrikethrough|在文本中使用删除线。 
+|![TB_textunderline_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_textunderline_2x.png)|文字下划线 |TextUnderline|给文本添加下划线。 
+|![TB_useradd_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_useradd_2x.png)|添加用户 |UserAdd|创建一个新用户。 
+|![TB_usergroup_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_usergroup_2x.png)|用户组 |UserGroup|显示或代表一组用户。 
+|![TB_user_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_user_2x.png)|用户 |User|显示或代表用户信息。 
+|![TB_volumedown_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_volumedown_2x.png)|降低音量 |VolumeDown|降低音量。 
+|![TB_volumeup_2x.png](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/TB_volumeup_2x.png)|提高音量 |VolumeUp|提高音量。 
 
 ## Controller 控件
 
@@ -407,10 +380,9 @@ Touch Bar中的图标的显示应与物理键盘按键上的文字的显示一�
 
 点击时，颜色选择器打开一个弹窗，其中包括用于颜色选择的控件。颜色选择器有三个可选功能：颜色选择器、描边颜色选择器和文本颜色选择器，具体使用哪个由用户决定。对于这三个功能，颜色选取器显示相同的弹窗是相同的。
 
-![图片](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touchbar_colorpicker_2x.png)
+![touchbar_colorpicker_2x](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touchbar_colorpicker_2x.png)
 
-![touchbar_colorpicker2_2x][]
-[touchbar_colorpicker2_2x]:https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touchbar_colorpicker2_2x.png
+![touchbar_colorpicker2_2x](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touchbar_colorpicker2_2x.png)
 
 **根据需要使用图标。**选择描边颜色时使用描边颜色选择器图标，选择文本颜色时使用文本颜色选择器图标。对于其他情境中的颜色选择，使用颜色选择器图标。
 
@@ -460,15 +432,13 @@ Touch Bar中的图标的显示应与物理键盘按键上的文字的显示一�
 
 固定式滑动条可以和已经加载或者存在的内容集合（例如打开的Safari标签）非常流畅连续的进行交互。当用户在滑动条上滑动手指时，手指下方的项目就会显示高亮状态。根据滑动条的设置，当用户的手指从一个项目移动到另外一个项目时，或者当用户抬起手指时，从而进行选择。如果内容的容量超出滑动条大小，用户的手指接近控件边缘时，滑动条自动添加滚轮以显示附加项目。在固式滑动条上，用户手指直接移动选项，而不是内容。
 
-![touchbar_scrubber_2x][]
-[touchbar_scrubber_2x]:https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touchbar_scrubber_2x.png
+![touchbar_scrubber_2x](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touchbar_scrubber_2x.png)
 
 #### 自由式滑动条
 
 自由式滑动条是在可以自由滚动的列表中显示内容，例如日历中日期列表，用户通过滑动直接滚动。根据自由式滑动条的配置，选择一个项目，用户可以将item拖动到一个特定的位置（比如滑动条的中间），或者滑动条静止用户点击该项目。
 
-![touchbar_wheel_2x][]
-[touchbar_wheel_2x]:https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touchbar_wheel_2x.png
+![touchbar_wheel_2x](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touchbar_wheel_2x.png)
 
 **用可以预测和逻辑有序的值**。当滚轮列表静止时，自由式滑动条上的许多值将会隐藏，最好的情况是，人们可以预测这些值是什么，例如使用字母表国家的列表，以便他们可以快速的浏览。
 
@@ -478,8 +448,7 @@ Touch Bar中的图标的显示应与物理键盘按键上的文字的显示一�
 
 分段控件是两个或者多个分段的线性集合，每个分段的作用如同按钮——通常会配置成切换按钮。在控件中，所有的分段都是等宽的。和按钮一样，分段也可以包含文本和图标。
 
-![touchbar_segmentedcontrol_2x][]
-[touchbar_segmentedcontrol_2x]:https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touchbar_segmentedcontrol_2x.png
+![touchbar_segmentedcontrol_2x](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touchbar_segmentedcontrol_2x.png)
 
 **通过限制段数以提高可用性**。分段越宽，用户越容易点击。
 
@@ -495,11 +464,9 @@ Touch Bar中的图标的显示应与物理键盘按键上的文字的显示一�
 
 分享服务选择器为用户提供了一种便捷的分享方式，用户可以分享文本、图像和应用程序、社交媒体账号中的其他内容，又或是其他服务。点击分享服务选择器会触发一个包含各种分享按钮的弹出视窗。
 
-![touchbar_sharingservicepicker_2x][]
-[touchbar_sharingservicepicker_2x]:https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touchbar_sharingservicepicker_2x.png
+![touchbar_sharingservicepicker_2x](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touchbar_sharingservicepicker_2x.png)
 
-![touchbar_sharingservicepicker2_2x][]
-[touchbar_sharingservicepicker2_2x]:https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touchbar_sharingservicepicker2_2x.png
+![touchbar_sharingservicepicker2_2x](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touchbar_sharingservicepicker2_2x.png)
 
 **仅在有可以分享的内容时才使能共享服务选择器**
 
@@ -509,8 +476,7 @@ Touch Bar中的图标的显示应与物理键盘按键上的文字的显示一�
 
 滑块是一个水平轨道，其包含一个被称为拇指的控件。用户可以用手指滑动滑块，使其在最大值和最小值之间移动。例如媒体播放期间，移动滑块以改变屏幕的亮度级别和位置，随着滑块值的改变，最小值和拇指控件之间的轨道用颜色填充。
 
-![touchbar_slider_2x][]
-[touchbar_slider_2x]:https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touchbar_slider_2x.png
+![touchbar_slider_2x](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/OSXHIGuidelines/Art/touchbar_slider_2x.png)
 
 **根据应用自定义滑块的外观显示。**为滑块的轨道选择与应用程序相协调的颜色。
 
