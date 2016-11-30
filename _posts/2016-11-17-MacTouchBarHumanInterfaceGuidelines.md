@@ -94,6 +94,7 @@ macOS为视障、听障和其他障碍用户提供了大量的无障碍访问功
 ### 颜色
 
 macOS定义了一系列系统颜色，用来动态匹配标准接口控件（如按钮和标签）的配色方案。以下是Touch Bar的理想系统颜色：
+
 - 控件颜色 (controlColor)
 - 标签颜色 (labelColor)
 - 二级标签颜色 (secondaryLabelColor)
