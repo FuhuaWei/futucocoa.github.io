@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "macOS 10.9 子App无法正常启动的问题"
-date:   2016-10-30 15:21:30 +0800
+date:   2016-11-30 15:21:30 +0800
 tags: [macOS]
 author: deger
 
