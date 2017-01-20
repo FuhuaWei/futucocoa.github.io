@@ -19,6 +19,7 @@ author: deger
 Mars 是微信官方的终端基础组件, 是一个业务性无关,平台性无关 使用C++ 编写的基础组件。目前已接入微信 Android、iOS、Mac、Windows、WP、UWP 等客户端。注意：目前仅支持Android、iOS、Mac 平台，其他平台会在后续的版本中很快支持
 
 它主要包括以下几个部分：
+
 - Comm：基础库，包括socket、线程、消息队列、协程等基础工具；
 - Xlog：通用日志模块，充分考虑移动终端的特点，提供高性能、高可用、安全性、容错性的日志功能
 - SDT：网络诊断模块；
@@ -37,6 +38,7 @@ cd mars
 ```
 
 打开`mars-open-mac.xcodeproj`可以看到大概的项目结构。
+
 - sdt-mac
 - stn-mac
 - log-mac
@@ -46,7 +48,7 @@ cd mars
 - openssl-mac
 
 
-### Xlog日志模块
+### 1. Xlog日志模块
 
 据官方文档[微信终端跨平台组件 mars 系列（一） - 高性能日志模块xlog](http://mp.weixin.qq.com/s/cnhuEodJGIbdodh0IxNeXQ)，Xlog优点很多。
 
@@ -68,7 +70,7 @@ void CryptSyncLog(const char* const _log_data, size_t _input_len, char* _output,
 void CryptAsyncLog(const char* const _log_data, size_t _input_len, char* _output, size_t& _output_len);
 ```
 
-### STN信令传输网络模块
+### 2. STN信令传输网络模块
 
 STN是一个跨平台的socket层解决方案，支持TCP协议，并且对IP选择、连接超时、读写超时等常见问题做了针对性的优化。官方也针对这些优化写了两篇文章：
 
@@ -92,17 +94,17 @@ virtual int Buf2Resp(int32_t taskid, void* const user_context, const AutoBuffer&
 STN支持HTTP，但支持得并不好。考虑到HTTP并不安全，苹果平台已经强制使用HTTPS。我斗胆预测mars在很长一段时间内并不能解决HTTPS安全性验证问题，HTTP这部分代码并不实用，还不如把这个交给各个系统自己来解决。
 
 
-### SDT网络诊断模块
+### 3. SDT网络诊断模块
 
 - 通过ping、dns、tcp、http等方式检测网络情况
 - 流量统计
 
 
-### Comm基础库模块
+### 4. Comm基础库模块
 
 包括socket、线程、消息队列、协程等基础工具
 
-### 其他模块
+### 5. 其他模块
 
 * openssl - 第三方源码，包含一些加密解密的代码
 * app - 提供了接口便于上层设置账户信息（用户ID，用户昵称）、设备信息（设备名称、设备类型）、应用信息（应用版本、文件目录）等接口。
