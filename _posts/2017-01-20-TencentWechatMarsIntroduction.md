@@ -7,8 +7,6 @@ author: deger
 
 ---
 
-## Mars开源值得称赞
-
 第一次听到微信终端跨平台组件 mars 要开源的消息时，我个人是比较兴奋的。富途证券同样有Android、iOS、Mac、Windows等客户端，我们也在开始做跨平台组件。微信的Mars组件，作为微信客户端的一部分，多年数以亿计的用户验证，非常值得期待。
 
 跨平台组件好处很明显，我们的iOS、Mac客户端从一开始就使用同一个底层，相比其他客户端，网络层、协议层、数据层、很多逻辑代码都是可以共用，可以省去很多时间。
@@ -64,11 +62,11 @@ cd mars
 Xlog主要实现在`log`项目和`comm`项目的`xlogger`目录中。`log`项目实现日志内容的读写、压缩逻辑。`xlogger`实现了日志分级、日志禁用逻辑，提供用于增加日志的c++接口如`xerror2(...)`，`xinfo2_if(exp, ...)`等。`MacDemo`样例项目中的`LogUtil`实现了ObjC接口。
 
 日志默认是不加密的，如果更改加密算法的话，只需要修改两个函数：
+
 ```
 void CryptSyncLog(const char* const _log_data, size_t _input_len, char* _output, size_t& _output_len);
 void CryptAsyncLog(const char* const _log_data, size_t _input_len, char* _output, size_t& _output_len);
 ```
-
 
 ### STN信令传输网络模块
 
@@ -79,6 +77,7 @@ STN是一个跨平台的socket层解决方案，支持TCP协议，并且对IP选
 
 
 STN对外的接口主要在`stn.h`中。
+
 ```
 //网络层收到push消息回调
 virtual void OnPush(int32_t cmdid, const AutoBuffer& msgpayload) = 0;
@@ -89,7 +88,6 @@ virtual bool Req2Buf(int32_t taskid, void* const user_context, AutoBuffer& outbu
 //底层回包返回给上层解析
 virtual int Buf2Resp(int32_t taskid, void* const user_context, const AutoBuffer& inbuffer, int& error_code, const int channel_select) = 0;
 ```
-
 
 STN支持HTTP，但支持得并不好。考虑到HTTP并不安全，苹果平台已经强制使用HTTPS。我斗胆预测mars在很长一段时间内并不能解决HTTPS安全性验证问题，HTTP这部分代码并不实用，还不如把这个交给各个系统自己来解决。
 
