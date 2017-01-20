@@ -88,6 +88,13 @@ int main(int argc, const char * argv[]) {
 
 在Build Setings - Other linker flags `/usr/local/boost_1_63_0/stage/lib/libboost_regex.a`
 
+使用命令行编译相当于 
+
+```
+c++ -I /usr/local/boost_1_63_0 main.cpp -o main /usr/local/boost_1_63_0/stage/lib/libboost_regex.a
+./main
+```
+
 如果这里直接使用lboost_regex, Xcode默认加载动态库。实际运用中可以考虑将目录中的动态库删除，只保留静态库，并在Build Setings - Library Search Paths  增加lib文件目录。
 
 ### 3.2 使用动态库
@@ -95,6 +102,12 @@ int main(int argc, const char * argv[]) {
 1. 在Build Setings - Library Search Paths  增加lib文件目录	
 2. 将lib文件目录中的libboost_regex.dylib文件拖入项目
 3. 确保在Build Phases - Link Bindary With Libraries中已经有该库
-4. 在Build Phases增加Copy Files Phase, 复制libboost_regex.dylib到Frameworks
+4. 在Build Phases - Copy Files, 复制libboost_regex.dylib到Products Directory
 
+使用命令行编译相当于 
 
+```
+c++ -I /usr/local/boost_1_63_0 main.cpp -o main -L/usr/local/boost_1_63_0/stage/lib/ -lboost_regex
+cp /usr/local/boost_1_63_0/stage/lib/libboost_regex.dylib ./
+./main
+```
