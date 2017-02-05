@@ -55,13 +55,38 @@ cd mars
 - Xlog支持日志分级，类似Android原生支持的日志系统和苹果平台的[CocoaLumberjack](https://github.com/CocoaLumberjack/CocoaLumberjack)库。
 - Xlog支持加密，支持压缩（83.7%的压缩率）
 - Xlog很好的兼顾这四点的前提下做到：高性能高压缩率、不丢失任何一行日志、避免系统卡顿和 CPU 波峰。
-	- 流畅性 
-	- 完整性 
-	- 容错性
-	- 安全性 
+	- 流畅性 - 不能影响程序的性能。最基本的保证是使用了日志不会导致程序卡顿
+	- 完整性 - 不能因为程序被系统杀掉，或者发生了 crash，crash 捕捉模块没有捕捉到导致部分时间点没有日志， 要保证程序整个生命周期内都有日志。
+	- 容错性 - 不能因为部分数据损坏就影响了整个日志文件，应该最小化数据损坏对日志文件的影响。
+	- 安全性 - 不能把用户的隐私信息打印到日志文件里，不能把日志明文打到日志文件里
 - Xlog还针对移动系统、硬件做了一些特殊优化，避免了常见的坑
 
 Xlog主要实现在`log`项目和`comm`项目的`xlogger`目录中。`log`项目实现日志内容的读写、压缩逻辑。`xlogger`实现了日志分级、日志禁用逻辑，提供用于增加日志的c++接口如`xerror2(...)`，`xinfo2_if(exp, ...)`等。`MacDemo`样例项目中的`LogUtil`实现了ObjC接口。
+
+XLog使用方法
+
+```
+    // init xlog
+#if DEBUG
+    xlogger_SetLevel(kLevelDebug);
+    appender_set_console_log(true);
+#else
+    xlogger_SetLevel(kLevelInfo);
+    appender_set_console_log(false);
+#endif
+    appender_open(kAppednerAsync, [[libraryDirectory stringByAppendingString:@"/log/"] UTF8String], "test"); 
+```
+
+- `xlogger_SetLevel`设置日志级别
+- `appender_set_console_log`设置是否在console中打印日志
+- `appender_open`设置日志目录、日志文件前缀
+
+保存的日志文件需要解压才可以查看，官方提供了python脚本`decode_mars_log_file.py`来解压。
+
+```
+python ./decode_mars_log_file.py ~/Library/log/test_20170120.xlog
+```
+
 
 日志默认是不加密的，如果更改加密算法的话，只需要修改两个函数：
 
@@ -69,6 +94,8 @@ Xlog主要实现在`log`项目和`comm`项目的`xlogger`目录中。`log`项目
 void CryptSyncLog(const char* const _log_data, size_t _input_len, char* _output, size_t& _output_len);
 void CryptAsyncLog(const char* const _log_data, size_t _input_len, char* _output, size_t& _output_len);
 ```
+
+暂时没有仔细研究日志加密，不过估计日志加密后，需要修改python脚本才能读取明文了。
 
 ### 2. STN信令传输网络模块
 
@@ -113,6 +140,20 @@ STN支持HTTP，但支持得并不好。考虑到HTTP并不安全，苹果平台
 ## 几点吐槽
 
 - 官方拿Mars跟[AFNetworking](https://github.com/AFNetworking/AFNetworking), [OKHttp](https://github.com/square/okhttp)做对比，其实有点奇怪。另外两个都不是跨平台的库也不涉及TCP连接，没什么可比性。在看源码之前，我认为还不如跟[Boost](http://www.boost.org)、[POCO](https://pocoproject.org)来做对比。看了源代码后，我估计官方没有拿Boost来做对比，可能是因为Mars本身都是依赖Boost的。
+
+|  | Mars | Boost | POCO
+|--------|--------|--------|
+|  跨平台  | yes | yes | yes |
+|  实现语言  | C++ | C++ | C++ |
+|  包含TCP实现  | yes | yes | yes |
+|  包含HTTP实现  | yes | no | yes |
+|  包含日志模块  | yes | no | yes |
+|  加密模块  | yes(openssl) | no | yes |
+|  xml模块  | yes(tinyxml) | no | yes |
+|  json模块  | no | no | yes |
+|  包含数据库模块  | no | no | yes |
+|  开源协议  | MIT | Boost | Boost |
+
 - 对于依赖Boost库这个事实，官方这么多文档都很少提及，是看代码才发现的。
 - Mars源码注释非常少，希望开源能持续完善
 
