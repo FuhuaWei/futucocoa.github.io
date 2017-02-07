@@ -31,6 +31,7 @@ Mars 是微信官方的终端基础组件, 是一个业务性无关,平台性无
 ## 模块分析
 
 在macOS系统下载源码 ，运行python脚本编译代码
+
 ```
 git clone https://github.com/Tencent/mars.git
 cd mars
@@ -105,20 +106,74 @@ STN是一个跨平台的socket层解决方案，支持TCP协议，并且对IP选
 - [微信终端跨平台组件 Mars 系列（三）连接超时与IP&Port排序](http://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&mid=2649286458&idx=1&sn=320f690faa4f97f7a49a291d4de174a9&chksm=8334c3b8b4434aae904b6d590027b100283ef175938610805dd33ca53f004bd3c56040b11fa6#rd)
 
 
-STN对外的接口主要在`stn.h`中。
+STN支持HTTP，但支持得并不好。考虑到HTTP并不安全，苹果平台已经强制使用HTTPS。我斗胆预测mars在很长一段时间内并不能解决HTTPS安全性验证问题，HTTP这部分代码并不实用，还不如把这个交给各个系统自己来解决。可气的是mars的例子代码中偏偏只有HTTP实现。
+
+### 2.1 TCP连接简单使用
+
+TCP连接对外的接口主要在`stn.h`、`stn_logic.h`、`longlink_packer.h`中。如果简单使用，大致看看这几个头文件即可。具体使用需要设置Callback、设置IP列表、发送请求。
 
 ```
-//网络层收到push消息回调
-virtual void OnPush(int32_t cmdid, const AutoBuffer& msgpayload) = 0;
+//设置Callback
+void SetCallback(Callback* const callback);
+    
+//设置IP列表
+void SetLonglinkSvrAddr(const std::string& host, const std::vector<uint16_t> ports);
+    
+//设置保底IP列表
+void SetBackupIPs(const std::string& host, const std::vector<std::string>& iplist);
+    
+//发送请求（异步）
+void StartTask(const Task& task);
+    
+```
+
+每个请求即一个`Task`, `Task`包含taskid, cmdid, need_auth, retry_count等属性，而task的组包、解包是通过Callback回调方法处理的。
+
+```
 
 //底层获取task要发送的数据
 virtual bool Req2Buf(int32_t taskid, void* const user_context, AutoBuffer& outbuffer, int& error_code, const int channel_select) = 0;
 
 //底层回包返回给上层解析
 virtual int Buf2Resp(int32_t taskid, void* const user_context, const AutoBuffer& inbuffer, int& error_code, const int channel_select) = 0;
+
+//网络层收到push消息回调
+virtual void OnPush(int32_t cmdid, const AutoBuffer& msgpayload) = 0;
 ```
 
-STN支持HTTP，但支持得并不好。考虑到HTTP并不安全，苹果平台已经强制使用HTTPS。我斗胆预测mars在很长一段时间内并不能解决HTTPS安全性验证问题，HTTP这部分代码并不实用，还不如把这个交给各个系统自己来解决。
+上面这些回调只是包体的组包解包，包头的处理在`longlink_packer.h`中。富途的TCP协议包头跟样例中包头不一样，需要改写这里的代码。很纳闷为什么没有用回调的方式让使用方处理。
+
+
+```
+/**
+ * package the request data
+ * _cmdid: business identifier
+ * _seq: task id
+ * _raw: business send buffer
+ * _packed: business send buffer + request header
+ */
+void longlink_pack(uint32_t _cmdid, uint32_t _seq, const void* _raw, size_t _raw_len, AutoBuffer& _packed);
+
+/**
+ * unpackage the response data
+ * _packed: data received from server
+ * _cmdid: business identifier
+ * _seq: task id
+ * _package_len:
+ * _body: business receive buffer
+ * return: 0 if unpackage succ
+ */
+int  longlink_unpack(const AutoBuffer& _packed, uint32_t& _cmdid, uint32_t& _seq, size_t& _package_len, AutoBuffer& _body);
+
+```
+
+### 2.2 TCP连接复杂情况
+
+网络管理类`NetCore`是一个单列，持有短连接管理类`ShortLinkTaskManager`, 长连接（TCP连接）管理类`LongLinkTaskManager`。`LongLinkTaskManager`只管理一个TCP连接`longlink`。可见默认是只有一条TCP连接，不支持不同协议连接不同服务器的情况。富途客户端用不同的特定TCP连接分别处理交易服务和行情服务，则需要自己费一番功夫。
+
+- 方案1:修改`NetCore`，持有两个`LongLinkTaskManager`，通过回调选取Manager
+- 方案2:修改`LongLinkTaskManager`的管理类，持有两个`longlink`，通过回调选取`longlink`
+- 方案3:修改优化`NetCore`代码，支持多条连接，贡献代码给mars
 
 
 ### 3. SDT网络诊断模块
