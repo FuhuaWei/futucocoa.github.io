@@ -85,7 +85,7 @@ XLog使用方法
 保存的日志文件需要解压才可以查看，官方提供了python脚本`decode_mars_log_file.py`来解压。
 
 ```
-python ./decode_mars_log_file.py ~/Library/log/test_20170120.xlog
+python ./log/crypt/decode_mars_log_file.py ~/Library/log/test_20170120.xlog
 ```
 
 
@@ -106,7 +106,7 @@ STN是一个跨平台的socket层解决方案，支持TCP协议，并且对IP选
 - [微信终端跨平台组件 Mars 系列（三）连接超时与IP&Port排序](http://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&mid=2649286458&idx=1&sn=320f690faa4f97f7a49a291d4de174a9&chksm=8334c3b8b4434aae904b6d590027b100283ef175938610805dd33ca53f004bd3c56040b11fa6#rd)
 
 
-STN支持HTTP，但支持得并不好。考虑到HTTP并不安全，苹果平台已经强制使用HTTPS。我斗胆预测mars在很长一段时间内并不能解决HTTPS安全性验证问题，HTTP这部分代码并不实用，还不如底层定个统一的接口，把具体实现交给各个平台自己来解决。可气的是mars的例子代码中偏偏只有HTTP实现。
+STN支持HTTP，但支持得并不好。考虑到HTTP并不安全，苹果平台已经强制使用HTTPS，mars要支持HTTPS还需要时间。
 
 ### 2.1 TCP连接简单使用
 
@@ -121,6 +121,9 @@ void SetLonglinkSvrAddr(const std::string& host, const std::vector<uint16_t> por
     
 //设置保底IP列表
 void SetBackupIPs(const std::string& host, const std::vector<std::string>& iplist);
+    
+//如果未连接则快速连接
+void MakesureLonglinkConnected();
     
 //发送请求（异步）
 void StartTask(const Task& task);
