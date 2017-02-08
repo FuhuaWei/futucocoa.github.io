@@ -106,7 +106,7 @@ STN是一个跨平台的socket层解决方案，支持TCP协议，并且对IP选
 - [微信终端跨平台组件 Mars 系列（三）连接超时与IP&Port排序](http://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&mid=2649286458&idx=1&sn=320f690faa4f97f7a49a291d4de174a9&chksm=8334c3b8b4434aae904b6d590027b100283ef175938610805dd33ca53f004bd3c56040b11fa6#rd)
 
 
-STN支持HTTP，但支持得并不好。考虑到HTTP并不安全，苹果平台已经强制使用HTTPS。我斗胆预测mars在很长一段时间内并不能解决HTTPS安全性验证问题，HTTP这部分代码并不实用，还不如把这个交给各个系统自己来解决。可气的是mars的例子代码中偏偏只有HTTP实现。
+STN支持HTTP，但支持得并不好。考虑到HTTP并不安全，苹果平台已经强制使用HTTPS。我斗胆预测mars在很长一段时间内并不能解决HTTPS安全性验证问题，HTTP这部分代码并不实用，还不如底层定个统一的接口，把具体实现交给各个平台自己来解决。可气的是mars的例子代码中偏偏只有HTTP实现。
 
 ### 2.1 TCP连接简单使用
 
@@ -141,7 +141,7 @@ virtual int Buf2Resp(int32_t taskid, void* const user_context, const AutoBuffer&
 virtual void OnPush(int32_t cmdid, const AutoBuffer& msgpayload) = 0;
 ```
 
-上面这些回调只是包体的组包解包，包头的处理在`longlink_packer.h`中。富途的TCP协议包头跟样例中包头不一样，需要改写这里的代码。很纳闷为什么没有用回调的方式让使用方处理。
+上面这些回调只是包体的组包解包，包头的处理在`longlink_packer.h`中。富途的TCP协议包头跟样例中包头不一样，需要改写这里的代码。很纳闷为什么没有用mars::stn::Callback回调的方式让使用方处理。
 
 
 ```
@@ -173,7 +173,6 @@ int  longlink_unpack(const AutoBuffer& _packed, uint32_t& _cmdid, uint32_t& _seq
 
 - 方案1:修改`NetCore`，持有两个`LongLinkTaskManager`，通过回调选取Manager
 - 方案2:修改`LongLinkTaskManager`的管理类，持有两个`longlink`，通过回调选取`longlink`
-- 方案3:修改优化`NetCore`代码，支持多条连接，贡献代码给mars
 
 
 ### 3. SDT网络诊断模块
@@ -192,25 +191,30 @@ int  longlink_unpack(const AutoBuffer& _packed, uint32_t& _cmdid, uint32_t& _seq
 * app - 提供了接口便于上层设置账户信息（用户ID，用户昵称）、设备信息（设备名称、设备类型）、应用信息（应用版本、文件目录）等接口。
 * baseevent - 一些系统事件的处理，如前后台切换、网络变化
 
-## 几点吐槽
+## 几点建议
 
 - 官方拿Mars跟[AFNetworking](https://github.com/AFNetworking/AFNetworking), [OKHttp](https://github.com/square/okhttp)做对比，其实有点奇怪。另外两个都不是跨平台的库也不涉及TCP连接，没什么可比性。在看源码之前，我认为还不如跟[Boost](http://www.boost.org)、[POCO](https://pocoproject.org)来做对比。看了源代码后，我估计官方没有拿Boost来做对比，可能是因为Mars本身都是依赖Boost的。
 
-|  | Mars | Boost | POCO
-|--------|--------|--------|
-|  跨平台  | yes | yes | yes |
-|  实现语言  | C++ | C++ | C++ |
-|  包含TCP实现  | yes | yes | yes |
-|  包含HTTP实现  | yes | no | yes |
-|  包含日志模块  | yes | no | yes |
-|  加密模块  | yes(openssl) | no | yes |
-|  xml模块  | yes(tinyxml) | no | yes |
-|  json模块  | no | no | yes |
-|  包含数据库模块  | no | no | yes |
-|  开源协议  | MIT | Boost | Boost |
+|  | Mars | Boost | POCO | libuv
+|--------|--------|--------|--------|
+|  跨平台  | yes | yes | yes | yes
+|  实现语言  | C++ | C++ | C++ | C++ |
+|  包含TCP实现  | yes | yes | yes | yes |
+|  包含HTTP实现  | yes | no | yes | no |
+|  包含日志模块  | yes | no | yes | no |
+|  加密模块  | yes(openssl) | no | yes | no |
+|  xml模块  | yes(tinyxml) | no | yes | no |
+|  json模块  | no | no | yes | no |
+|  包含数据库模块  | no | no | yes | no |
+|  开源协议  | MIT | Boost | Boost | MIT |
 
 - 对于依赖Boost库这个事实，官方这么多文档都很少提及，是看代码才发现的。
-- Mars源码注释非常少，希望开源能持续完善
+- Mars源码注释非常少，希望开源社区能持续完善
+- HTTP模块跟TCP模块分离，HTTPS的实现还是交由各平台实现就好
+- TCP模块能默认支持多条TCP连接
+- TCP协议包头也通过mars::stn::Callback回调处理
+- 增加TCP连接使用样例
+- 增加日志加密解密样例
 
 
 ## 总结
